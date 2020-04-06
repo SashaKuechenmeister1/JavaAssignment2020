@@ -16,11 +16,11 @@ public class CovidGUI extends JFrame
 {
 	/// Attributes ///
 	
-	private JTabbedPane   bookmarks;
-	private JPanel		  DataLearning;
-	private JPanel 	   	  SymptomsLearning;
-	private JLabel 		  title;
-	private Font 		  font;
+	private JTabbedPane		bookmarks;
+	private JPanel		  	DataLearning;
+	private JPanel 	   	  	SymptomsLearning;
+	private JLabel 		  	title;
+	private Font 		  	font;
 
 	
 	/// Constructor ///
