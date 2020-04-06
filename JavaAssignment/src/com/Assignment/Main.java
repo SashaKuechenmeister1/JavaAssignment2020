@@ -2,7 +2,7 @@ package com.Assignment;
 
 public class Main {
 	
-	//// Attributes ////
+	/// Attributes ///
 	
 	private String  temperature;
 	private boolean cough;
@@ -11,7 +11,7 @@ public class Main {
 	private boolean travelDanger;
 	private boolean covid19;
 	
-	//// Constructor ////
+	/// Constructor ///
 	
 	public Main (String temperature, boolean cough, boolean travelDanger, boolean covid19)
 	{
@@ -31,7 +31,7 @@ public class Main {
 		setCovid19 		(covid19);
 	}
 	
-	//// Methods ////
+	/// Methods ///
 	
 	public String toString()
 	{
@@ -45,7 +45,7 @@ public class Main {
 	}
 
 	
-	//// Getters & Setters ////
+	/// Getters & Setters ///
 
 	//temperature
 	public String getTemperature()
