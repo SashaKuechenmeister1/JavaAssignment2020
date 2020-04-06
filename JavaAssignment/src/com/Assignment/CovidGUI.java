@@ -14,7 +14,8 @@ import java.awt.Font;
 
 public class CovidGUI extends JFrame
 {
-	//Attributes
+	/// Attributes ///
+	
 	private JTabbedPane   bookmarks;
 	private JPanel		  DataLearning;
 	private JPanel 	   	  SymptomsLearning;
@@ -22,7 +23,8 @@ public class CovidGUI extends JFrame
 	private Font 		  font;
 
 	
-	//Constructor
+	/// Constructor ///
+	
 	public CovidGUI()
 	{
 		super ("CoronaVirus Diagnostic Tool");
@@ -53,6 +55,7 @@ public class CovidGUI extends JFrame
 		add (title,BorderLayout.NORTH);
 		add (bookmarks,BorderLayout.CENTER);
 		
+		//
 		setVisible (true);
 	}
 }
