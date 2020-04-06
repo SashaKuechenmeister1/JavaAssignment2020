@@ -18,7 +18,7 @@ public class CovidGUI extends JFrame
 	private JTabbedPane   bookmarks;
 	private JPanel		  DataLearning;
 	private JPanel 	   	  SymptomsLearning;
-	private JLabel 		  heading;
+	private JLabel 		  title;
 	private Font 		  font;
 
 	
@@ -37,20 +37,20 @@ public class CovidGUI extends JFrame
 		bookmarks.addTab ("Data Collection", DataLearning);
 		bookmarks.addTab ("Checking Symptoms", SymptomsLearning);
 		
-		heading = new JLabel ("CoronaVirus Diagnostic Tool");
+		title = new JLabel ("CoronaVirus Diagnostic Tool");
 		
 		//Adding aesthetics to the GUI
 		Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
-		heading.setBorder (border);
+		title.setBorder (border);
 		
 		bookmarks.setBackground (Color.orange);
-		heading.setForeground (Color.red);
+		title.setForeground (Color.red);
 		
 		font = new Font ("Courier", Font.BOLD, 23);
-		heading.setFont (font);
+		title.setFont (font);
 		
 		//Add the GUI components to the frame
-		add (heading,BorderLayout.NORTH);
+		add (title,BorderLayout.NORTH);
 		add (bookmarks,BorderLayout.CENTER);
 		
 		setVisible (true);
