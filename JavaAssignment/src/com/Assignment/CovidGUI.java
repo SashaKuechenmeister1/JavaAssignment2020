@@ -53,6 +53,7 @@ public class CovidGUI extends JFrame
 		add (title,BorderLayout.NORTH);
 		add (bookmarks,BorderLayout.CENTER);
 		
+		//view GUI
 		setVisible (true);
 	}
 }
