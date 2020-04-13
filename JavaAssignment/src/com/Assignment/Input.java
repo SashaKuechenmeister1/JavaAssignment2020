@@ -1,6 +1,6 @@
 package com.Assignment;
 
-public class Main {
+public class Input {
 	
 	/// Attributes ///
 	
@@ -13,15 +13,7 @@ public class Main {
 	
 	/// Constructor ///
 	
-	public Main (String temperature, boolean cough, boolean travelDanger, boolean covid19)
-	{
-		setTemperature 	(temperature);
-		setCough 		(cough);
-		setTravelDanger (travelDanger);
-		setCovid19 		(covid19);
-	}
-	
-	public Main (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger, boolean covid19)
+	public Input (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger, boolean covid19)
 	{
 		setTemperature 	(temperature);
 		setCough 		(cough);
@@ -31,6 +23,25 @@ public class Main {
 		setCovid19 		(covid19);
 	}
 	
+	public Input (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger)
+	{
+		setTemperature 	(temperature);
+		setCough 		(cough);
+		setAchesPains 	(achesPains);
+		setSoreThroat	(soreThroat);
+		setTravelDanger (travelDanger);
+	}
+	
+	public Input (String[] parameters)
+	{
+		setTemperature	(parameters[0]);
+		setCough		(parameters[1]);
+		setAchesPains	(parameters[2]);
+		setSoreThroat	(parameters[3]);
+		setTravelDanger	(parameters[4]);
+		setCovid19		(parameters[5]);
+	}
+
 	/// Methods ///
 	
 	public String toString()
@@ -59,7 +70,7 @@ public class Main {
 
 	
 	//cough
-	public boolean isCough()
+	public boolean getCough()
 	{
 		return cough;
 	}
@@ -81,7 +92,7 @@ public class Main {
 
 	
 	//aches and pains
-	public boolean isAchesPains()
+	public boolean getAchesPains()
 	{
 		return achesPains;
 	}
@@ -103,7 +114,7 @@ public class Main {
 	
 
 	//sore throat
-	public boolean isSoreThroat()
+	public boolean getSoreThroat()
 	{
 		return soreThroat;
 	}
@@ -125,7 +136,7 @@ public class Main {
 
 	
 	//travelled to dangerous area
-	public boolean isTravelDanger()
+	public boolean getTravelDanger()
 	{
 		return travelDanger;
 	}
@@ -147,7 +158,7 @@ public class Main {
 	
 	
 	//covid19
-	public boolean isCovid19()
+	public boolean getCovid19()
 	{
 		return covid19;
 	}

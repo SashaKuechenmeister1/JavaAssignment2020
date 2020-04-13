@@ -7,12 +7,15 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JLabel;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
 
-public class CovidGUI extends JFrame
+
+public class CovidGUI extends JFrame 
 {
 	/// Attributes ///
 	
@@ -35,6 +38,7 @@ public class CovidGUI extends JFrame
 		DataLearning 		= new JPanel();
 		SymptomsLearning 	= new JPanel();
 		bookmarks 			= new JTabbedPane();
+
 		
 		bookmarks.addTab ("Data Collection", DataLearning);
 		bookmarks.addTab ("Checking Symptoms", SymptomsLearning);
@@ -45,8 +49,8 @@ public class CovidGUI extends JFrame
 		Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 		title.setBorder (border);
 		
-		bookmarks.setBackground (Color.orange);
-		title.setForeground (Color.red);
+		bookmarks.setBackground (Color.orange); //sets bookmark colours to orange
+		title.setForeground (Color.red); //sets title colour to red
 		
 		font = new Font ("Courier", Font.BOLD, 23);
 		title.setFont (font);
@@ -58,4 +62,6 @@ public class CovidGUI extends JFrame
 		//
 		setVisible (true);
 	}
+	
 }
+
