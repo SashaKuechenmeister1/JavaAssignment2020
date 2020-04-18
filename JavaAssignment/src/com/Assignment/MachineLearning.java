@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class MachineLearning
 {
-	ArrayList <Input> 			inputs = new ArrayList <Input>();
+	ArrayList <Input> 		inputs = new ArrayList <Input>(); 
 	double 				resultPositive;
 	double 				resultNegative;
 	float 				sum;
