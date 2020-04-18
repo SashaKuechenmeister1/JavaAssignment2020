@@ -1,67 +1,130 @@
 package com.Assignment;
 
-import javax.swing.BorderFactory;
+/*
+ CovidGUI CLASS
+ 
+ Function:
+ - creates a Graphical User Interface
+ - allows user to select their symptoms and calculate their chance of having the Coronavirus
+ */
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-
-
+import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-
-
-public class CovidGUI extends JFrame 
-{
+public class CovidGUI extends JFrame implements ActionListener
+{	
+	 
 	/// Attributes ///
 	
-	private JTabbedPane		bookmarks;
-	private JPanel		  	DataLearning;
-	private JPanel 	   	  	SymptomsLearning;
-	private JLabel 		  	title;
-	private Font 		  	font;
-
+	JButton 			calChance;
+	JCheckBox 			cough, achesPains, soreThroat, travelDanger;
+	JPanel 				menu, select, symptoms;
+	JLabel 				temperature, title;
+	JComboBox<String>	selectTemp;
+	int vgap;
+	int hgap;
 	
 	/// Constructor ///
 	
 	public CovidGUI()
 	{
-		super ("CoronaVirus Diagnostic Tool");
-		setSize (400,500);
-		setLayout (new BorderLayout());
+		super 		("CoronaVirus Diagnostic Tool");
+		setSize 	(330,330);
+		setLayout 	(new BorderLayout());
+		setResizable(false);
 		
-		//Creating the GUI components and adding Tabs
-		DataLearning 		= new JPanel();
-		SymptomsLearning 	= new JPanel();
-		bookmarks 			= new JTabbedPane();
+		select = new JPanel();
+		vgap = 5;
+		hgap = 5;
+		select.setLayout(new GridLayout(7,0, hgap , vgap));
+		
+		//Title
+		title = new JLabel("CoronaVirus Diagnostic Tool");
+		title.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		title.setForeground(Color.red);
+		
+		//Main Menu Panel
+		menu = new JPanel();	
+	
+		add(title, BorderLayout.NORTH);
+		add(menu, BorderLayout.CENTER);
+
+		//Symptoms Panel
+		symptoms = new JPanel();
+		symptoms.setLayout(new BorderLayout());
+		symptoms.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"Please select your symptoms: "));
+		menu.add(symptoms);
+		
+		//Temperature selection
+		temperature = new JLabel("Temperature:");
+		selectTemp = new JComboBox<>(new String[] {"Normal","Hot","Cold","Cool"}); // allow user to select one of 4 options in regards to their temperature
+		selectTemp.setSelectedIndex(0);
+				
+		//Symptoms Check Boxes
+		cough = new JCheckBox("Cough");
+		achesPains = new JCheckBox("Aches and Pains");
+		soreThroat = new JCheckBox("Sore throat");
+		travelDanger = new JCheckBox("Have you recently travelled to an infected area?");
+		
+		//added aesthetics
+		cough.setBackground(Color.orange);
+		achesPains.setBackground(Color.orange);
+		soreThroat.setBackground(Color.orange);
+		travelDanger.setBackground(Color.orange);
+		select.setBackground(Color.orange);
+		temperature.setBackground(Color.orange);
+		symptoms.setBackground(Color.orange);
+		selectTemp.setBackground(Color.white);
 
 		
-		bookmarks.addTab ("Data Collection", DataLearning);
-		bookmarks.addTab ("Checking Symptoms", SymptomsLearning);
+		//adds everything to the GUI
+		select.add(cough);
+		select.add(achesPains);
+		select.add(soreThroat);
+		select.add(travelDanger);
+		select.add(temperature);
+		select.add(selectTemp);
+		symptoms.add(select, BorderLayout.NORTH);
+	
+		// Calculates chance of having the CoronaVirus
+		calChance = new JButton("Calculate Chance of having CoronaVirus");
+		calChance.addActionListener(this);
 		
-		title = new JLabel ("CoronaVirus Diagnostic Tool");
+		//adds the calChance button to the GUI
+		select.add(calChance, BorderLayout.SOUTH);
 		
-		//Adding aesthetics to the GUI
-		Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
-		title.setBorder (border);
-		
-		bookmarks.setBackground (Color.orange); //sets bookmark colours to orange
-		title.setForeground (Color.red); //sets title colour to red
-		
-		font = new Font ("Courier", Font.BOLD, 23);
-		title.setFont (font);
-		
-		//Add the GUI components to the frame
-		add (title,BorderLayout.NORTH);
-		add (bookmarks,BorderLayout.CENTER);
-		
-		//
+		//makes the GUI visible
 		setVisible (true);
+		
+	}
+	/*	
+	 	NOTE: I was unable to figure out how to calculate the chance of getting the virus using the GUI. In order to see if the
+	 	calculations/machine learning part works, please change the symptoms values manually in the actionPerformed below and
+	 	then click the "Calculate Chance of having CoronaVirus" button to see the result in the console. 
+	 */
+	public void actionPerformed(ActionEvent event)
+	{
+		if(event.getSource() == calChance)
+		{
+			MachineLearning ML = new MachineLearning("MLdata.csv");
+			System.out.println("Chance of having the CoronaVirus: "+ML.predict(new Input("cool",false,false,false,true))+"%"); //temperature,cough,achesPains,soreThroat,travelDanger
+		}
+
 	}
 	
 }
+	
+	
+
 
