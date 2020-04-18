@@ -1,5 +1,13 @@
 package com.Assignment;
 
+/*
+Input CLASS
+
+Function:
+- stores the data from the "MLdata.csv" file
+- stores the symptoms attributes (temperature, cough, achesPains, soreThroat, travelDanger, coronaVirus)
+ */
+
 public class Input {
 	
 	/// Attributes ///
@@ -9,19 +17,9 @@ public class Input {
 	private boolean achesPains;
 	private boolean soreThroat;
 	private boolean travelDanger;
-	private boolean covid19;
+	private boolean coronaVirus;
 	
 	/// Constructor ///
-	
-	public Input (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger, boolean covid19)
-	{
-		setTemperature 	(temperature);
-		setCough 		(cough);
-		setAchesPains 	(achesPains);
-		setSoreThroat	(soreThroat);
-		setTravelDanger (travelDanger);
-		setCovid19 		(covid19);
-	}
 	
 	public Input (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger)
 	{
@@ -39,20 +37,15 @@ public class Input {
 		setAchesPains	(parameters[2]);
 		setSoreThroat	(parameters[3]);
 		setTravelDanger	(parameters[4]);
-		setCovid19		(parameters[5]);
+		setcoronaVirus	(parameters[5]);
 	}
 
 	/// Methods ///
 	
-	public String toString()
+	public String toString() //Automatically generated toString()
 	{
-		return 
-		"Temperature: 		"+getTemperature()+
-		"\nCough: 			"+getCough()+
-		"\nAches n Pains: 	"+getAchesPains()+
-		"\nSore Throat: 	"+getSoreThroat()+
-		"\nTravelDanger: 	"+getTravelDanger()+
-		"\nCovid19: 		"+getCovid19();
+		return "Input [temperature=" + temperature + ", cough=" + cough + ", achesPains=" + achesPains + ", soreThroat="
+				+ soreThroat + ", travelDanger=" + travelDanger + ", coronaVirus=" + coronaVirus + "]";
 	}
 
 	
@@ -112,6 +105,7 @@ public class Input {
 		}
 	}
 	
+	
 
 	//sore throat
 	public boolean getSoreThroat()
@@ -135,7 +129,7 @@ public class Input {
 	}
 
 	
-	//travelled to dangerous area
+	//travelled to infected area
 	public boolean getTravelDanger()
 	{
 		return travelDanger;
@@ -144,6 +138,7 @@ public class Input {
 	{
 		this.travelDanger = travelDanger;
 	}
+	
 	public void setTravelDanger (String travelDanger)
 	{
 		if (travelDanger.equals ("yes"))
@@ -157,24 +152,25 @@ public class Input {
 	}
 	
 	
-	//covid19
-	public boolean getCovid19()
+	//coronaVirus
+	public boolean getCoronaVirus()
 	{
-		return covid19;
+		return coronaVirus;
 	}
-	public void setCovid19 (boolean covid19)
+	public void setcoronaVirus (boolean coronaVirus)
 	{
-		this.covid19 = covid19;
+		this.coronaVirus = coronaVirus;
 	}
-	public void setCovid19 (String covid19)
+	
+	public void setcoronaVirus (String coronaVirus)
 	{
-		if (covid19.equals ("yes"))
+		if (coronaVirus.equals ("yes"))
 		{
-			this.covid19 = true;
+			this.coronaVirus = true;
 		}
 		else
 		{
-			this.covid19 = false;
+			this.coronaVirus = false;
 		}
 	}
 
