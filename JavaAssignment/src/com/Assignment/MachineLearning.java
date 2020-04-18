@@ -18,23 +18,23 @@ import java.util.ArrayList;
 
 public class MachineLearning
 {
-	ArrayList <Input> 	inputs = new ArrayList <Input>();
+	ArrayList <Input> 			inputs = new ArrayList <Input>();
 	double 				resultPositive;
 	double 				resultNegative;
 	float 				sum;
 	Scanner 			myScanner;
 	
 	HashMap <String,Integer> 	temperature 	= new HashMap <String,Integer>();
-	HashMap <Boolean,Integer> 	cough 			= new HashMap <Boolean,Integer>();
-	HashMap <Boolean,Integer> 	achesPains 		= new HashMap <Boolean,Integer>();
-	HashMap <Boolean,Integer> 	soreThroat 		= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	cough 		= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	achesPains 	= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	soreThroat 	= new HashMap <Boolean,Integer>();
 	HashMap <Boolean,Integer> 	travelDanger 	= new HashMap <Boolean,Integer>();
 	HashMap <Boolean,Integer> 	coronaVirus 	= new HashMap <Boolean,Integer>();
 	
 	HashMap <String,Integer> 	temperatureGivenCoronaVirus 	= new HashMap <String,Integer>();
-	HashMap <Boolean,Integer> 	coughGivenCoronaVirus 			= new HashMap <Boolean,Integer>();
-	HashMap <Boolean,Integer> 	achesPainsGivenCoronaVirus 		= new HashMap <Boolean,Integer>();
-	HashMap <Boolean,Integer> 	soreThroatGivenCoronaVirus		= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	coughGivenCoronaVirus 		= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	achesPainsGivenCoronaVirus 	= new HashMap <Boolean,Integer>();
+	HashMap <Boolean,Integer> 	soreThroatGivenCoronaVirus	= new HashMap <Boolean,Integer>();
 	HashMap <Boolean,Integer> 	travelDangerGivenCoronaVirus 	= new HashMap <Boolean,Integer>();
 	
 	
