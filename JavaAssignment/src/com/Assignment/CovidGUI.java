@@ -33,21 +33,19 @@ public class CovidGUI extends JFrame implements ActionListener
 	JLabel 				temperature, title;
 	JComboBox<String>	selectTemp;
 	int vgap;
-	int hgap;
 	
 	/// Constructor ///
 	
 	public CovidGUI()
 	{
 		super 		("CoronaVirus Diagnostic Tool");
-		setSize 	(330,330);
-		setLayout 	(new BorderLayout());
-		setResizable(false);
+		setSize 	(330,330); //size of GUI
+		setLayout 	(new BorderLayout()); //for changing component positions
+		setResizable(false); //stops user from changing the size of the GUI
 		
 		select = new JPanel();
 		vgap = 5;
-		hgap = 5;
-		select.setLayout(new GridLayout(7,0, hgap , vgap));
+		select.setLayout(new GridLayout(7, 0, 0, vgap)); //used to make the GUI look neat and create better spacing
 		
 		//Title
 		title = new JLabel("CoronaVirus Diagnostic Tool");
@@ -57,19 +55,20 @@ public class CovidGUI extends JFrame implements ActionListener
 		//Main Menu Panel
 		menu = new JPanel();	
 	
+		//add menu and title to GUI
 		add(title, BorderLayout.NORTH);
 		add(menu, BorderLayout.CENTER);
 
 		//Symptoms Panel
 		symptoms = new JPanel();
 		symptoms.setLayout(new BorderLayout());
-		symptoms.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"Please select your symptoms: "));
+		symptoms.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"Please select your symptoms: ")); //sub title
 		menu.add(symptoms);
 		
 		//Temperature selection
 		temperature = new JLabel("Temperature:");
 		selectTemp = new JComboBox<>(new String[] {"Normal","Hot","Cold","Cool"}); // allow user to select one of 4 options in regards to their temperature
-		selectTemp.setSelectedIndex(0);
+		selectTemp.setSelectedIndex(0); //automatically sets the selected temperature to "normal"
 				
 		//Symptoms Check Boxes
 		cough = new JCheckBox("Cough");
@@ -77,7 +76,7 @@ public class CovidGUI extends JFrame implements ActionListener
 		soreThroat = new JCheckBox("Sore throat");
 		travelDanger = new JCheckBox("Have you recently travelled to an infected area?");
 		
-		//added aesthetics
+		//added GUI aesthetics
 		cough.setBackground(Color.orange);
 		achesPains.setBackground(Color.orange);
 		soreThroat.setBackground(Color.orange);
@@ -88,7 +87,7 @@ public class CovidGUI extends JFrame implements ActionListener
 		selectTemp.setBackground(Color.white);
 
 		
-		//adds everything to the GUI
+		//adds everything else to the GUI
 		select.add(cough);
 		select.add(achesPains);
 		select.add(soreThroat);
@@ -97,8 +96,7 @@ public class CovidGUI extends JFrame implements ActionListener
 		select.add(selectTemp);
 		symptoms.add(select, BorderLayout.NORTH);
 	
-		// Calculates chance of having the CoronaVirus
-		calChance = new JButton("Calculate Chance of having CoronaVirus");
+		calChance = new JButton("Calculate Chance of having CoronaVirus"); //button to display calculations
 		calChance.addActionListener(this);
 		
 		//adds the calChance button to the GUI
@@ -117,8 +115,9 @@ public class CovidGUI extends JFrame implements ActionListener
 	{
 		if(event.getSource() == calChance)
 		{
+			//calls the predict method from the Machine Learning class to calculate the percentage of having the coronaVirus
 			MachineLearning ML = new MachineLearning("MLdata.csv");
-			System.out.println("Chance of having the CoronaVirus: "+ML.predict(new Input("cool",false,false,false,true))+"%"); //temperature,cough,achesPains,soreThroat,travelDanger
+			System.out.println("Chance of having the CoronaVirus: "+ML.predict(new Input("normal",false,true,false,true))+"%"); //temperature,cough,achesPains,soreThroat,travelDanger
 		}
 
 	}
