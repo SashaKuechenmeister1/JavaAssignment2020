@@ -59,12 +59,15 @@ public class MachineLearning
 		}
 		catch (Exception e)
 		{
-			System.out.println("This file is invalid");
+			System.out.println("This file is invalid"); //displays if there is an error with reading the file
 			return false;
 		}
 		myScanner.nextLine();
-		while (myScanner.hasNextLine()) inputs.add(new Input(myScanner.nextLine().split(",")));
-		return true;
+		while (myScanner.hasNextLine())
+		{
+			inputs.add(new Input(myScanner.nextLine().split(",")));
+		}
+			return true;
 	}
 	
 	public void Frequency()
