@@ -21,6 +21,7 @@ public class Input {
 	
 	/// Constructor ///
 	
+	//constructor for testing user inputs
 	public Input (String temperature, boolean cough, boolean achesPains, boolean soreThroat, boolean travelDanger)
 	{
 		setTemperature 	(temperature);
@@ -30,6 +31,7 @@ public class Input {
 		setTravelDanger (travelDanger);
 	}
 	
+	//constructor to read from MLdata.csv file
 	public Input (String[] parameters)
 	{
 		setTemperature	(parameters[0]);
