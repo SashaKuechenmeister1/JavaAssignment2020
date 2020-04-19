@@ -117,6 +117,7 @@ public class CovidGUI extends JFrame implements ActionListener
 		{
 			//calls the predict method from the Machine Learning class to calculate the percentage of having the coronaVirus
 			MachineLearning ML = new MachineLearning("MLdata.csv");
+			//manually change the 1 string and 4 boolean values and then click the calculation button on the GUI to see result in console
 			System.out.println("Chance of having the CoronaVirus: "+ML.predict(new Input("normal",false,true,false,true))+"%"); //temperature,cough,achesPains,soreThroat,travelDanger
 		}
 
