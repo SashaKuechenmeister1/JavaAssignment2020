@@ -18,12 +18,15 @@ import java.util.ArrayList;
 
 public class MachineLearning
 {
+	/// Attributes ///
+	
 	ArrayList <Input> 	inputs = new ArrayList <Input>(); 
 	double 				resultPositive;
 	double 				resultNegative;
 	float 				sum;
 	Scanner 			myScanner;
 	
+	//HashMaps to store the frequency depending on if has the virus or not
 	HashMap <String,Integer> 	temperature 	= new HashMap <String,Integer>();
 	HashMap <Boolean,Integer> 	cough 			= new HashMap <Boolean,Integer>();
 	HashMap <Boolean,Integer> 	achesPains 		= new HashMap <Boolean,Integer>();
@@ -65,14 +68,14 @@ public class MachineLearning
 		myScanner.nextLine();
 		while (myScanner.hasNextLine())
 		{
-			inputs.add(new Input(myScanner.nextLine().split(",")));
+			inputs.add(new Input(myScanner.nextLine().split(","))); //creates new line for every input object in the array list
 		}
 			return true;
 	}
 	
 	public void Frequency()
 	{
-		for (Input e : inputs)
+		for (Input e : inputs) 
 		{
 			increaseFrequency(temperature,e.getTemperature());
 			increaseFrequency(cough,e.getCough());
@@ -81,7 +84,7 @@ public class MachineLearning
 			increaseFrequency(travelDanger,e.getTravelDanger());
 			increaseFrequency(coronaVirus,e.getCoronaVirus());
 			
-			if (e.getCoronaVirus())
+			if (e.getCoronaVirus()) 
 			{
 				increaseFrequency(temperatureGivenCoronaVirus,e.getTemperature());
 				increaseFrequency(coughGivenCoronaVirus,e.getCough());
@@ -96,6 +99,7 @@ public class MachineLearning
 	//Calculates the chance of getting the virus based on data given
 	public double predict(Input testing)
 	{
+		//calculate the positive probabilities
 		sum 			= coronaVirus.get(true);
 		resultPositive 	= temperatureGivenCoronaVirus.get(testing.getTemperature()) / sum;
 		resultPositive 	= resultPositive * coughGivenCoronaVirus.get(testing.getCough()) / sum;
@@ -104,6 +108,7 @@ public class MachineLearning
 		resultPositive 	= resultPositive * travelDangerGivenCoronaVirus.get(testing.getTravelDanger()) / sum;
 		resultPositive 	= resultPositive * (float) coronaVirus.get(true) / inputs.size();
 		
+		//calculate the negative probabilities
 		sum 			= coronaVirus.get(false);
 		resultNegative 	= (temperature.get(testing.getTemperature()) - temperatureGivenCoronaVirus.get(testing.getTemperature())) / sum;
 		resultNegative 	= resultNegative * (cough.get(testing.getCough()) -coughGivenCoronaVirus.get(testing.getCough())) / sum;
@@ -113,33 +118,33 @@ public class MachineLearning
 		resultNegative 	= resultNegative * (float) coronaVirus.get(false) / inputs.size();
 
 		
-		return resultPositive / (resultPositive+resultNegative) * 100;
+		return resultPositive / (resultPositive+resultNegative) * 100; //return the result in percentage
 		
 		
 	
 	}
 	
-	public void increaseFrequency (HashMap <String,Integer> map, String k)
+	public void increaseFrequency (HashMap <String,Integer> map, String k) //temperature key only
 	{
-		if (map.get(k) != null)
+		if (map.get(k) != null) //increment if already there
 		{
 			map.put(k,map.get(k)+1);
 		}
 		else
 		{
-			map.put(k,1);
+			map.put(k,1); //if not, implement and set to 1
 		}
 	}
 	
-	public void increaseFrequency (HashMap <Boolean,Integer> map, boolean k)
+	public void increaseFrequency (HashMap <Boolean,Integer> map, boolean k) //all boolean key
 	{
-		if (map.get(k) != null)
+		if (map.get(k) != null) //increment if already there
 		{
 			map.put(k,map.get(k)+1);
 		}
 		else
 		{
-			map.put(k,1);
+			map.put(k,1); //if not, implement and set to 1
 		}
 	}
 }
